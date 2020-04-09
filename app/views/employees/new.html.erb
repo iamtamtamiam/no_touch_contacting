@@ -1,0 +1,22 @@
+Sign Page
+
+<%= form_for (@employee) do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username%>
+    <br>
+
+    <%= f.label :password %>
+    <%= f.password_field :password%>
+    <br>
+
+    <%= f.label :name, "First and Last Name"%>
+    <%= f.text_field :name%>
+    <br>
+
+    <%= f.label :job_title %>
+    <%= f.text_field :job_title%>
+    <br>
+
+     <%= f.submit "Sign Me Up!" %>
+
+<% end %>

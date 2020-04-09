@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  get '/signup', to: 'employees#new'
+  get '/signup', to: 'employees#create'
+  
+  
   resources :logs
   resources :contacts
   resources :employees
