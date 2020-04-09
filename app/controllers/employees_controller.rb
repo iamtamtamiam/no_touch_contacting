@@ -12,7 +12,10 @@ class EmployeesController < ApplicationController
        else
             render sign_up
        end
-    
+    end 
+
+    def show
+        #@employee = Employee.find_by()
     end 
 
 
