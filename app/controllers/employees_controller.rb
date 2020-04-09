@@ -15,7 +15,7 @@ class EmployeesController < ApplicationController
     end 
 
     def show
-        #@employee = Employee.find_by()
+        @employee = Employee.find_by(id: params[:id])
     end 
 
 
