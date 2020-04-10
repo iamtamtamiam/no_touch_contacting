@@ -17,7 +17,7 @@ class EmployeesController < ApplicationController
     def show
         redirect_if_not_logged_in
         @employee = Employee.find_by(id: params[:id])
-        redirect_to '/' if !@user
+        redirect_to '/' if !@employee
     end 
 
 
