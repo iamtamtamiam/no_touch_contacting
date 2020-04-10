@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+  
   root "sessions#home"
 
   get '/signup', to: 'employees#new'
   get '/signup', to: 'employees#create'
-  
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+
+  delete '/logout', to: 'sessions#destroy'
   
   resources :logs
   resources :contacts
