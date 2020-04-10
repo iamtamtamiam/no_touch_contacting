@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_024714) do
+ActiveRecord::Schema.define(version: 2020_04_10_160913) do
 
   create_table "contacts", force: :cascade do |t|
     t.string "name"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2020_04_09_024714) do
     t.integer "contact_id"
     t.string "communication_type"
     t.datetime "date"
-    t.datetime "start_time"
     t.boolean "answered"
     t.text "log_notes"
     t.datetime "created_at", precision: 6, null: false
