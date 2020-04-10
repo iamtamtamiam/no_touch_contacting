@@ -1,0 +1,20 @@
+Add a New Contact
+
+<%= form_for (@contact) do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name%>
+    <br>
+
+    <%= f.label :description %>
+    <%= f.text_field :description%>
+    <br>
+
+    <%= f.label :notes %>
+    <%= f.text_area :notes%>
+    <br>
+
+    <%= f.submit "Add New Contact"%>
+
+<%end%>
+
