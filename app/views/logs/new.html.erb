@@ -1,0 +1,33 @@
+Add a New Log
+
+<%= form_for (@log) do |f| %>
+
+    <%= f.label :date %>
+    <%= f.date_field :date%>
+    <br>
+
+    <%= f.label :start_time %>
+    <%= f.time_field :start_time%>
+    <br>
+
+    <% @contacts.each do |contact| %>
+        <input type="checkbox" name="log[contact_id]" id="<%= contact.id %>" value="<%= contact.id %>"><%= contact.name %><br>
+    <% end %>
+
+    <%= f.label :communication_type %>
+    <%= f.text_field :communication_type%>
+    <br>
+
+    <%= f.label :answered %>
+    <%= f.check_box :answered%>
+    <br>
+
+    <%= f.label :log_notes, "additional notes" %>
+    <%= f.text_area :log_notes%>
+    <br>
+
+
+    <%= f.submit "Add New Log"%>
+
+<%end%>
+

@@ -1,0 +1,15 @@
+Log index page
+
+ 
+<% @logs.each do |log| %>
+
+  <li> 
+    
+    <%= link_to log.date, log_path(log) %> 
+    -  <%= log.start_time%>
+    -  <%= log.communication_type%>
+    -  <%= log.answered%>
+
+</li>
+
+<%end%>

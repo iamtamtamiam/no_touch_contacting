@@ -1,0 +1,16 @@
+Log Show Page
+
+<br>Contacted: <%= @log.contact_id%>
+
+<br>Date: <%= @log.date%> at <%= @log.start_time%>
+
+<br>Communication Type: <%= @log.communication_type%>
+
+<br>Answered?: <%= @log.answered%>
+
+<br>Additional Notes: <%= @log.log_notes%>
+
+<br> all logs, add a new log, contacts link
+
+<%= link_to "All Contacts", contacts_path %>
+<br><%= link_to "Add Log", new_log_path %>
