@@ -6,9 +6,11 @@ Add a New Log
     <%= f.date_field :date%>
     <br>
 
-    <%= f.label :start_time %>
-    <%= f.time_field :start_time%>
+    <%= f.label :date, "Time" %>
+    <%= f.time_field :date, :ignore_date => true %>
     <br>
+
+    
 
     <% @contacts.each do |contact| %>
         <input type="checkbox" name="log[contact_id]" id="<%= contact.id %>" value="<%= contact.id %>"><%= contact.name %><br>

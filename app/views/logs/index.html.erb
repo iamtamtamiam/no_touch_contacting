@@ -1,12 +1,12 @@
-Log index page
+Log index page, add search filter
 
  
 <% @logs.each do |log| %>
 
   <li> 
     
-    <%= link_to log.date, log_path(log) %> 
-    -  <%= log.start_time%>
+    <%= link_to log.date, log_path(log) %>: 
+     <%= log.contact.name %>
     -  <%= log.communication_type%>
     -  <%= log.answered%>
 
