@@ -1,6 +1,6 @@
 Add a New Log
 
-<%= form_for (@log) do |f| %>
+<%= form_for ([@contact, @log]) do |f| %>
 
     <%= f.label :date %>
     <%= f.date_field :date%>
@@ -13,7 +13,8 @@ Add a New Log
     
 
     <% @contacts.each do |contact| %>
-        <input type="radio" name="log[contact_id]" id="<%= contact.id %>" value="<%= contact.id %>"><%= contact.name %><br>
+        <input type="radio" name="log[contact_id]" id="<%= contact.id %>" value="<%= contact.id %>" <%= "checked" if contact.id==@contact.id %>>
+        <%= contact.name %><br>
     <% end %>
 
     <%= f.label :communication_type %>

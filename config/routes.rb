@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :logs
 
   resources :contacts do
-    resources :logs, only: [:new, :index]
+    resources :logs, only: [:new, :create, :index]
   end 
 
 

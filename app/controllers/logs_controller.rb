@@ -10,8 +10,15 @@ class LogsController < ApplicationController
     end 
 
     def new
-        @log = Log.new
         @contacts = Contact.all
+        if params[:contact_id] && @contact = Contact.find_by(id: params[:contact_id])
+            @log = @contact.logs.build
+        else
+            render :new
+        end 
+
+        #@log = Log.new
+        #@contacts = Contact.all
         
     end 
 
