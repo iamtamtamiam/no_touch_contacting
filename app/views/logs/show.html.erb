@@ -11,6 +11,11 @@ Log Show Page
 <br>Additional Notes: <%= @log.log_notes%>
 
 <br> all logs, add a new log, contacts link
+<br>
+
+<%if @log.employee == current_employee%>
+    <%= link_to  "Edit this Log", edit_log_path(@log) %>
+<%end%>
 
 <br><%= link_to "Go to All Logs", logs_path %>
 
