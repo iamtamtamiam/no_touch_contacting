@@ -6,8 +6,10 @@ Contact Show Page
 
 <br>Additional Notes About Contact: <%= @contact.notes%>
 
-
+<%= link_to  "Add a New Log with this Contact", new_contact_log_path(@contact) %>
 <%= link_to  "Edit this Contact", edit_contact_path(@contact) %>
+
+<%= link_to  "All Logs with this Contact", contact_logs_path(@contact) %>
 
 All contacts link still needs changes 
 <%= link_to "All Contacts", contacts_path %>

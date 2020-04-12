@@ -1,12 +1,18 @@
 class LogsController < ApplicationController
 
     def index
-        @logs = Log.all
+        if params[:contact_id] && @contact = Contact.find_by(id: params[:contact_id])
+            @logs = @contact.logs
+        else
+            @logs = Log.all
+            #maybe need error message
+        end 
     end 
 
     def new
         @log = Log.new
         @contacts = Contact.all
+        
     end 
 
     def create

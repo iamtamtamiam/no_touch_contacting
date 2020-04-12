@@ -12,10 +12,14 @@ Rails.application.routes.draw do
   
   resources :logs
 
-  resources :contacts
+  resources :contacts do
+    resources :logs, only: [:new, :index]
+  end 
 
 
-  resources :employees
+  resources :employees do
+    resources :logs, only: [:index]
+  end 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
