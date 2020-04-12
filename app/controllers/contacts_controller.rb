@@ -23,6 +23,25 @@ class ContactsController < ApplicationController
         redirect_to new_contact_path if !@contact
     end 
 
+    def edit
+        @contact = Contact.find_by(id: params[:id])
+        redirect_to contacts_path if !@contact
+        #add flash message for this contact doesnt exist
+        #any user can edit contact...as long as logged in
+        # maybe add last upadated by? on the show page
+    end 
+
+    def update
+        @contact = Contact.find_by(id: params[:id])
+        redirect_to contacts_path if !@contact
+        if @contact.update(contact_params)
+            redirect_to contact_path(@contact)
+        else
+            render :edit #will this work
+            #add flash message before
+        end 
+    end 
+
     private
 
     def contact_params

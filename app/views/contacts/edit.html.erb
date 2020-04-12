@@ -1,0 +1,22 @@
+Edit this Contact!
+
+<%= form_for (@contact) do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name%>
+    <br>
+
+    <%= f.label :description %>
+    <%= f.text_field :description%>
+    <br>
+
+    <%= f.label :notes %>
+    <%= f.text_area :notes%>
+    <br>
+
+    <%= f.submit "Edit Contact"%>
+
+    <br> or back to contact page <%= link_to  "#{@contact.name}'s page'", contact_path(@contact) %>
+
+<%end%>
+
