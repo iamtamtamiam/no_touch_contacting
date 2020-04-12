@@ -3,6 +3,8 @@ class LogsController < ApplicationController
     def index
         if params[:contact_id] && @contact = Contact.find_by(id: params[:contact_id])
             @logs = @contact.logs
+        elsif params[:employee_id] && @employee = Employee.find_by(id: params[:employee_id])
+            @logs = @employee.logs
         else
             @logs = Log.all
             #maybe need error message
@@ -14,7 +16,7 @@ class LogsController < ApplicationController
         if params[:contact_id] && @contact = Contact.find_by(id: params[:contact_id])
             @log = @contact.logs.build
         else
-            render :new
+            @log = Log.new
         end 
 
         #@log = Log.new
