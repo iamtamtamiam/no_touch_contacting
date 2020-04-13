@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
     end 
 
     def index #change it to only current_employee's contacts
-        @contacts = Contact.all
+        @contacts = Contact.all.alpha
     end 
 
     def create

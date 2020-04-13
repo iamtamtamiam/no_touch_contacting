@@ -3,4 +3,6 @@ class Contact < ApplicationRecord
     has_many :employees, through: :logs
     
 
+    scope :alpha, -> { order(:name) }
+
 end
