@@ -19,4 +19,11 @@ private
             redirect_to root_path
         end 
     end 
+
+    def redirect_if_logged_in
+        if logged_in?
+            flash[:message] = "You are already logged in. If you wish to log out, click 'Logout'."
+            redirect_to employee_path(current_employee)
+        end
+    end 
 end

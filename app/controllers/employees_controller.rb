@@ -1,6 +1,7 @@
 class EmployeesController < ApplicationController
 
     def new
+        redirect_if_logged_in
         @employee = Employee.new
     end 
 
