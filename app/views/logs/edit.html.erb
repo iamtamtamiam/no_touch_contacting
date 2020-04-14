@@ -4,15 +4,9 @@ Edit this Log
 <%= form_for (@log) do |f| %>
 
     <%= f.label :date %>
-    <%= f.date_field :date%>
+    <%= f.datetime_field :date%>
     <br>
-
-    <%= f.label :date, "Time" %>
-    <%= f.time_field :date, :ignore_date => true %>
-    <br>
-
     
-
     <% @contacts.each do |contact| %>
         <input type="radio" name="log[contact_id]" id="<%= contact.id %>" value="<%= contact.id %>" <%= "checked" if contact.id==@log.contact_id %>>
         <%= contact.name %><br>

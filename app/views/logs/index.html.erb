@@ -6,7 +6,9 @@ Log index page, add search filter
   <li> 
     
     <%= link_to display_date(log), log_path(log) %>: 
-     <%= log.contact.name %>
+    by  <%= log.employee.name %>
+    with <%= link_to log.contact.name, contact_path(log.contact)%>
+    
     -  <%= log.communication_type%>
     -  <%= answered_yesno(log)%>
 
