@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 private
 
     def current_employee
-        @current_employee ||= Employee.find_by_id(session[:employee_id]) if session[:employee_id]    end 
+        @current_employee ||= Employee.find_by_id(session[:employee_id]) if session[:employee_id]
+    end 
 
     def logged_in?
         !!session[:employee_id]

@@ -17,7 +17,11 @@ class EmployeesController < ApplicationController
     def show
         redirect_if_not_logged_in
         @employee = Employee.find_by(id: params[:id])
-        redirect_to '/' if !@employee
+        if @employee != current_employee
+            flash[:message] = "You are not authorized to view another employee's info. Back to your homepage."
+            redirect_to employee_path(current_employee)
+        end
+        
     end 
 
 
