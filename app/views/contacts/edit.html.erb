@@ -1,5 +1,5 @@
 Edit this Contact!
-
+<%= render partial: "layouts/errors", locals: {object: @contact} %>
 <%= form_for (@contact) do |f| %>
 
     <%= f.label :name %>

@@ -10,7 +10,7 @@ class EmployeesController < ApplicationController
             session[:employee_id] = @employee.id
             redirect_to employee_path(@employee)
        else
-            render sign_up
+            render :new
        end
     end 
 
