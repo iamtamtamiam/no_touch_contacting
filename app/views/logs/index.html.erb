@@ -5,7 +5,7 @@ Log index page, add search filter
 
   <li> 
     
-    <%= link_to log.date, log_path(log) %>: 
+    <%= link_to display_date(log), log_path(log) %>: 
      <%= log.contact.name %>
     -  <%= log.communication_type%>
     -  <%= answered_yesno(log)%>
