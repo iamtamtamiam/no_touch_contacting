@@ -2,11 +2,11 @@ class LogsController < ApplicationController
 
     def index
         if params[:contact_id] && @contact = Contact.find_by(id: params[:contact_id])
-            @logs = @contact.logs
+            @logs = @contact.logs.date_ordered
         elsif params[:employee_id] && @employee = Employee.find_by(id: params[:employee_id])
-            @logs = @employee.logs
+            @logs = @employee.logs.date_ordered
         else
-            @logs = Log.all
+            @logs = Log.all.date_ordered
             #maybe need error message
         end 
     end 
