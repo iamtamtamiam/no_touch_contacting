@@ -6,6 +6,8 @@ class Employee < ApplicationRecord
 
     validates :username, presence: true
     validates :username, uniqueness: true
+
+    #this is breaking my omniauth!! need to set a username then
     #should i set email as username for omniauth instead?
 
 end
