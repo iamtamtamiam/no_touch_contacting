@@ -1,6 +1,23 @@
+<% content_for :welcome do %>
+
 <%= flash[:message]  if flash[:message]%>
 <br>
+<h3>Welcome to</h3>
+<br>
+<h2>No Touch Contacting </h2>
+<br>
 
-Sessions Home Page - Welcome!
+<p> A contact log tracker - inspired by the quarantine. </p>
+<p> #6feetapart #socialdistance #cya #remotelearning #workingfromhome </p>
 
-<%= link_to  "Log In Using Google", '/auth/google_oauth2' %>
+<p> To begin,
+
+<%= link_to  "Sign Up", signup_path %> or 
+
+<%= link_to  "Log In", login_path %> (if returning).
+
+You can also 
+<%= link_to  "Log In/Sign Up Using Google", '/auth/google_oauth2' %>
+
+
+<% end %>
