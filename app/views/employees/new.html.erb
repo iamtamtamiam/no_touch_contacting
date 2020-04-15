@@ -1,6 +1,6 @@
 <%= render partial: "layouts/errors", locals: {object: @employee} %>
 
-Sign Up Page
+<h1>Sign Up Page</h1> <br>
 
 
 <%= form_for (@employee) do |f| %>
@@ -11,11 +11,11 @@ Sign Up Page
     <%= f.label :password %>
     <%= f.password_field :password%>
     <br>
-
+<br>
     <%= f.label :email %>
     <%= f.email_field :email%>
     <br>
-
+<br>
     <%= f.label :name, "First and Last Name"%>
     <%= f.text_field :name%>
     <br>
@@ -23,7 +23,12 @@ Sign Up Page
     <%= f.label :job_title %>
     <%= f.text_field :job_title%>
     <br>
+<br>
 
      <%= f.submit "Sign Me Up!" %>
 
 <% end %>
+
+
+<br>
+<%= link_to  "Back to Welcome Page", root_path %>

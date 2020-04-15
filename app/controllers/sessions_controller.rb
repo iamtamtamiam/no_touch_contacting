@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
+    #layout 'layouts/welcome'
+    layout 'layouts/welcome'
+
     def new
         redirect_if_logged_in
+        #render layout: 'welcome'
     end 
 
     def create

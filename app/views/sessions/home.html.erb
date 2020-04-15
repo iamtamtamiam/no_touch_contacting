@@ -1,10 +1,9 @@
-<% content_for :welcome do %>
 
 <%= flash[:message]  if flash[:message]%>
 <br>
 <h3>Welcome to</h3>
 <br>
-<h2>No Touch Contacting </h2>
+<h2>NoTouch Contacting </h2>
 <br>
 
 <p> A contact log tracker - inspired by the quarantine. </p>
@@ -20,4 +19,3 @@ You can also
 <%= link_to  "Log In/Sign Up Using Google", '/auth/google_oauth2' %>
 
 
-<% end %>

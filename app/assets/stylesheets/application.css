@@ -31,3 +31,19 @@
     text-decoration: none;
   }
   
+  #site_content
+  { text-align: left;
+    width: 100%;
+    height: 100%;
+    float: left;
+    background-color: rgb(230, 203, 168);
+  }
+
+  #content
+  { text-align: left;
+    width: 620px;
+    padding: 40px 40px;
+    float: left;
+  }
+    
+  

@@ -1,8 +1,12 @@
 class EmployeesController < ApplicationController
 
+    layout 'layouts/user'
+
     def new
         redirect_if_logged_in
         @employee = Employee.new
+        render layout: 'welcome'
+        
     end 
 
     def create

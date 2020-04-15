@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NoTouchContacting</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+     <nav class="site-header">
+       <div class="container d-flex flex-column flex-md-row justify-content-between">
+          <% if logged_in? %>
+            <%= link_to  "Logout", logout_path, method: "delete" %> |
+            <%= link_to "Add New Contact", new_contact_path %> |
+            <%= link_to "My Homepage", employee_path(current_employee) %>
+            <%= link_to "Add Log", new_log_path %>
+            <%= link_to  "All Logs", logs_path %>
+          <% else %>
+
+            <%= link_to  "Sign Up", signup_path %>
+            <%= link_to "Log In", login_path %>
+            <%= link_to  "Log In/Sign Up Using Google", '/auth/google_oauth2' %>
+          <%end%>
+        </div>
+      </nav>
+
+<!-- <div style="overflow: auto;" id="site_content"> -->
+<div style="height: 100px>
+    <div style="overflow: auto;" id="site_content">
+        <div style="overflow: visible; opacity: 1;" id="content">
+
+            <%= yield %>
+        </div><!-- #content-## -->
+    </div><!-- #site-content-## -->
+
+</div>
+
+
+    
+
+      
+  </body>
+</html>
