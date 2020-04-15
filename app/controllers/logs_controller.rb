@@ -1,4 +1,6 @@
 class LogsController < ApplicationController
+    before_action :redirect_if_not_logged_in
+
 
     def index
         if params[:contact_id] && @contact = Contact.find_by(id: params[:contact_id])
@@ -36,11 +38,11 @@ class LogsController < ApplicationController
     end 
 
     def show
-        @log = Log.find_by(id: params[:id])
+        set_log_by_id
     end 
 
     def edit
-        @log = Log.find_by(id: params[:id])
+        set_log_by_id
         @contacts = Contact.all
         redirect_to logs_path if !@log || @log.employee != current_employee
         #add flash message for this log doesnt exist
@@ -49,7 +51,7 @@ class LogsController < ApplicationController
     end 
 
     def update
-        @log = Log.find_by(id: params[:id])
+        set_log_by_id
         redirect_to logs_path if !@log
         if @log.update(log_params)
             redirect_to log_path(@log)
@@ -61,10 +63,12 @@ class LogsController < ApplicationController
 
 
 
-
-
-
     private
+
+    def set_log_by_id
+        @log = Log.find_by(id: params[:id])
+    end 
+
 
     def log_params
         params.require(:log).permit(:communication_type, :date, :start_time, :answered, :log_notes, :contact_id)
