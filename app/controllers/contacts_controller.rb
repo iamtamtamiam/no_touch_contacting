@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+    before_action :redirect_if_not_logged_in
 
     def new
         @contact = Contact.new
@@ -19,21 +20,18 @@ class ContactsController < ApplicationController
     end 
 
     def show
-        @contact = Contact.find_by(id: params[:id])
-        redirect_to new_contact_path if !@contact
+        set_contact_by_id
     end 
 
     def edit
-        @contact = Contact.find_by(id: params[:id])
-        redirect_to contacts_path if !@contact
+        set_contact_by_id
         #add flash message for this contact doesnt exist
         #any user can edit contact...as long as logged in
         # maybe add last upadated by? on the show page
     end 
 
     def update
-        @contact = Contact.find_by(id: params[:id])
-        redirect_to contacts_path if !@contact
+       set_contact_by_id
         if @contact.update(contact_params)
             redirect_to contact_path(@contact)
         else
@@ -43,6 +41,12 @@ class ContactsController < ApplicationController
     end 
 
     private
+
+    def set_contact_by_id
+        @contact = Contact.find_by(id: params[:id])
+        redirect_to contacts_path if !@contact
+
+    end 
 
     def contact_params
         params.require(:contact).permit(:name, :description, :notes)
