@@ -10,23 +10,25 @@
   </head>
 
   <body>
+     <nav class="site-header">
+      <div>
+        <% if logged_in? %>
+          <%= link_to  "Logout", logout_path, method: "delete" %> |
+          <%= link_to "Add New Contact", new_contact_path %> |
+          <%= link_to "My Homepage", employee_path(current_employee) %>
+          <%= link_to "Add Log", new_log_path %>
+          <%= link_to  "All Logs", logs_path %>
+        <% else %>
 
-    <div>
-      <% if logged_in? %>
-        <%= link_to  "Logout", logout_path, method: "delete" %> |
-        <%= link_to "Add New Contact", new_contact_path %> |
-        <%= link_to "My Homepage", employee_path(current_employee) %>
-        <%= link_to "Add Log", new_log_path %>
-        <%= link_to  "All Logs", logs_path %>
-      <% else %>
+          <%= link_to  "Sign Up", signup_path %> |
+          <%= link_to "Log In", login_path %>|
+        <%end%>
+      </nav>
 
-        <%= link_to  "Sign Up", signup_path %> |
-        <%= link_to "Log In", login_path %>|
-      <%end%>
+      </div>
+
+      <%= yield %>
+
       
-
-    </div>
-
-    <%= yield %>
   </body>
 </html>
