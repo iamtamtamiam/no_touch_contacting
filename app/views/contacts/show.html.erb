@@ -1,17 +1,19 @@
-Contact Show Page
+<h3>Viewing Contact Info</h3>
 
-<br><%= @contact.name%>'s show page
-
-<br>Description: <%= @contact.description%>
-
-<br>Additional Notes About Contact: <%= @contact.notes%>
+<br><h5>Contact Name: <%= @contact.name%></h5>
+<li>Description: <%= @contact.description%></li>
+<br>
+<li>Additional Notes About Contact: <%= @contact.notes%></li>
 
 <br>
-<%= link_to  "Add a new Log for this Contact", new_contact_log_path(@contact) %>
+Contact Options: 
+<%= link_to  "Edit this Contact ", edit_contact_path(@contact) %> |
+<%= link_to "All Contacts", contacts_path %>
+<br>
 
-<%= link_to  "Edit this Contact", edit_contact_path(@contact) %>
-
+Logging Options:
+<%= link_to  "Add a New Log for this Contact", new_contact_log_path(@contact) %>  |
 <%= link_to  "All Logs with this Contact", contact_logs_path(@contact) %>
 
-All contacts link still needs changes 
-<%= link_to "All Contacts", contacts_path %>
+
+

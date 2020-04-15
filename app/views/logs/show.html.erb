@@ -1,14 +1,16 @@
-Log Show Page
+<h3>Log For:<h3>
 
-<br>Contacted: <%= @log.contact.name%>
+<h5 >Date: <%= display_date(@log)%></h5>
 
-<br>Date: <%= display_date(@log)%>
 
-<br>Communication Type: <%= @log.communication_type%>
+<br><li>Contacted: <%= @log.contact.name%></li>
 
-<br>Answered?:  <%= answered_yesno(@log)%>
 
-<br>Additional Notes: <%= @log.log_notes%>
+<li>Communication Type: <%= @log.communication_type%></li>
+
+<li>Answered?:  <%= answered_yesno(@log)%></li>
+
+<li>Additional Notes: <%= @log.log_notes%></li>
 
 <br> all logs, add a new log, contacts link
 <br>

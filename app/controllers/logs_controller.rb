@@ -1,7 +1,9 @@
 class LogsController < ApplicationController
+    
     before_action :redirect_if_not_logged_in
 
-
+    layout 'layouts/user'
+    
     def index
         if params[:contact_id] && @contact = Contact.find_by(id: params[:contact_id])
             @logs = @contact.logs.date_ordered

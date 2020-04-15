@@ -1,15 +1,15 @@
 <%= render partial: "layouts/errors", locals: {object: @log} %>
-Add a New Log
+<h2>Add a New Log</h2>
 
 <% if @contact %>
     <%=render partial: 'form'%>
 <% else%>
     <%= form_for (@log) do |f| %>
 
-    <%= f.label :date %>
+    <%= f.label :date, "Date and Time:" %>
     <%= f.datetime_field :date%>
     <br>
-
+    Select a Contact:<br>
     <% @contacts.each do |contact| %>
         <input type="radio" name="log[contact_id]" id="<%= contact.id %>" value="<%= contact.id %>" >
         <%= contact.name %><br>

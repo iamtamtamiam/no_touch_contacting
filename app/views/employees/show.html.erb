@@ -1,15 +1,28 @@
 <%= flash[:message]  if flash[:message]%>
 <br>
 
-Empoyee Show Page
-
-<br><%= @employee.name%>'s show page
-<br><%= @employee.email%>
-<br>Job title: <%= @employee.job_title%>
-
-<br> recent calls, add a new log, contacts link
-
+<br><h2 class="text-center">Hello, <%= @employee.name%>!</h2>
+<h4><%= @employee.email%><h4>
+<h4>Job title: <%= @employee.job_title%><h4>
 <br>
-<%= link_to  "All of My Logs", employee_logs_path(@employee) %>
-<%= link_to "All Contacts", contacts_path %>
-<br><%= link_to "Add Log", new_log_path %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm border border-dark text-center">
+      <h3>Log History</h3>
+     <p> <%= link_to  "All of My Logs", employee_logs_path(@employee) %></p>
+    </div>
+    <div class="col-sm border border-dark text-center">
+     <h3> Add a New Log</h3>
+      <p><%= link_to "Add Log", new_log_path %></p>
+    </div>
+    <div class="col-sm border border-dark text-center">
+      <h3>View All Contacts</h3>
+      <p><%= link_to "All Contacts", contacts_path %></p>
+    </div>
+  </div>
+</div>
+
+
+<br> recent calls
+

@@ -14,9 +14,10 @@
      <nav class="site-header">
        <div class="container d-flex flex-column flex-md-row justify-content-between">
           <% if logged_in? %>
+            <%= link_to "My Homepage", employee_path(current_employee) %>
             <%= link_to  "Logout", logout_path, method: "delete" %> |
             <%= link_to "Add New Contact", new_contact_path %> |
-            <%= link_to "My Homepage", employee_path(current_employee) %>
+            
             <%= link_to "Add Log", new_log_path %>
             <%= link_to  "All Logs", logs_path %>
           <% else %>

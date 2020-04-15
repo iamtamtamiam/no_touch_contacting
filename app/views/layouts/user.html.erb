@@ -13,11 +13,12 @@
      <nav class="site-header">
        <div class="container d-flex flex-column flex-md-row justify-content-between">
           <% if logged_in? %>
-            <%= link_to  "Logout", logout_path, method: "delete" %> |
-            <%= link_to "Add New Contact", new_contact_path %> |
             <%= link_to "My Homepage", employee_path(current_employee) %>
-            <%= link_to "Add Log", new_log_path %>
+            <%= link_to "Add New Contact", new_contact_path %>
+            <%= link_to  "All Contacts", contacts_path %>
+            <%= link_to "Add New Log", new_log_path %>
             <%= link_to  "All Logs", logs_path %>
+            <%= link_to  "Logout", logout_path, method: "delete" %>
           <% else %>
 
             <%= link_to  "Sign Up", signup_path %>
@@ -27,18 +28,17 @@
         </div>
       </nav>
 
-<!-- <div style="overflow: auto;" id="site_content"> -->
-<div style="height: 100px>
-    <div style="overflow: auto;" id="site_content">
-        <div style="overflow: visible; opacity: 1;" id="content">
+
+ 
+   
+        <div id="content">
 
             <%= yield %>
         </div><!-- #content-## -->
-    </div><!-- #site-content-## -->
-
-</div>
 
 
+
+    
     
 
       
