@@ -9,6 +9,7 @@ class LogsController < ApplicationController
         @employees = Employee.all
         @contacts = Contact.all
         
+        #need to keep params different because of nested route and form params
         if !params[:employee].blank? && !params[:contact].blank?
             @logs = Log.where("employee_id = ? AND contact_id = ?", params[:employee], params[:contact])
         elsif params[:employee_id] 
