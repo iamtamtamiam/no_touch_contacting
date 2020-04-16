@@ -1,6 +1,16 @@
 <h3>All Logs</h3>
 
 <br>
+<%if !params[:employee_id]%>
+  <h3>Filter Logs:</h3>
+     <%= form_tag("/logs", method: "get") do %>
+    
+     <%= select_tag "employee", options_from_collection_for_select(@employees, "id", "name"), include_blank: true %>
+     <%= select_tag "contact", options_from_collection_for_select(@contacts, "id", "name"), include_blank: true %>
+     <%= submit_tag "Filter" %>
+     <% end %>
+<%end%>
+<br>
 
 <% @logs.each do |log| %>
 

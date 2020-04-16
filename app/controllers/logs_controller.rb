@@ -5,14 +5,43 @@ class LogsController < ApplicationController
     layout 'layouts/user'
     
     def index
-        if params[:contact_id] && @contact = Contact.find_by(id: params[:contact_id])
-            @logs = @contact.logs.date_ordered
-        elsif params[:employee_id] && @employee = Employee.find_by(id: params[:employee_id])
-            @logs = @employee.logs.date_ordered
+        #nested routes
+        @employees = Employee.all
+        @contacts = Contact.all
+        
+        if params[:employee_id] 
+            @logs = Log.by_employee(params[:employee_id])
+        elsif !params[:employee].blank?
+            @logs = Log.by_employee(params[:employee])
+        elsif params[:contact_id]
+            @logs = Log.by_contact(params[:contact_id])
+        elsif !params[:contact].blank?
+            @logs = Log.by_contact(params[:contact])
         else
             @logs = Log.all.date_ordered
-            #maybe need error message
-        end 
+        end
+
+        
+
+
+
+        #if params[:contact_id] && @contact = Contact.find_by(id: params[:contact_id])
+        #    @logs = @contact.logs.date_ordered
+        #elsif params[:employee_id]
+        #    @logs = Log.by_employee(params[:employee_id])
+        ##elsif !params[:employee].blank? && params[:employee_id] 
+        #    #@logs = Log.by_employee(params[:employee]) 
+        #else
+        #    @logs = Log.all.date_ordered
+        #    #maybe need error message
+        #end
+    
+        # @employees = Employee.all
+        # if !params[:employee].blank?
+        #     @logs = Log.by_employee(params[:employee])
+        # else 
+        #     @logs = Log.all
+        # end
     end 
 
     def new
