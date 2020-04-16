@@ -9,7 +9,9 @@ class LogsController < ApplicationController
         @employees = Employee.all
         @contacts = Contact.all
         
-        if params[:employee_id] 
+        if !params[:employee].blank? && !params[:contact].blank?
+            @logs = Log.where("employee_id = ? AND contact_id = ?", params[:employee], params[:contact])
+        elsif params[:employee_id] 
             @logs = Log.by_employee(params[:employee_id])
         elsif !params[:employee].blank?
             @logs = Log.by_employee(params[:employee])
