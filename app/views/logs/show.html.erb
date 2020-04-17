@@ -1,4 +1,4 @@
-<h3>Log For:<h3>
+<h3>Log Info:<h3>
 
 <h5 >Date: <%= display_date(@log)%></h5>
 
@@ -8,18 +8,18 @@
 
 <li>Communication Type: <%= @log.communication_type%></li>
 
-<li>Answered?:  <%= answered_yesno(@log)%></li>
+<li>Answered?  <%= answered_yesno(@log)%></li>
 
 <li>Additional Notes: <%= @log.log_notes%></li>
 
-<br> all logs, add a new log, contacts link
+<br> 
 <br>
 
 <%if @log.employee == current_employee%>
     <%= link_to  "Edit this Log", edit_log_path(@log) %>
 <%end%>
 
-<br><%= link_to "Go to All Logs", logs_path %>
+<br>
+<br><%= link_to "Go to All Logs", logs_path %> | 
+<%= link_to "Add Log", new_log_path %>
 
-<%= link_to "All Contacts", contacts_path %>
-<br><%= link_to "Add Log", new_log_path %>

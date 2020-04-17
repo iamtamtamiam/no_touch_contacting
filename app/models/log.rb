@@ -4,7 +4,7 @@ class Log < ApplicationRecord
     
 
     validates :date, presence: true
-
+   
 
     scope :date_ordered, -> { order(date: :desc) }
 

@@ -1,5 +1,5 @@
 <%= render partial: "layouts/errors", locals: {object: @log} %>
-Edit this Log
+<h5>Edit this Log</h5>
 
 <%= form_for (@log) do |f| %>
 
@@ -20,7 +20,7 @@ Edit this Log
     <%= f.check_box :answered%>
     <br>
 
-    <%= f.label :log_notes, "additional notes" %>
+    <%= f.label :log_notes, "Additional notes" %>
     <%= f.text_area :log_notes%>
     <br>
 

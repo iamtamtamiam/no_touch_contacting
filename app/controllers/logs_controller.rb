@@ -90,7 +90,7 @@ class LogsController < ApplicationController
         if @log.update(log_params)
             redirect_to log_path(@log)
         else
-            render :edit
+            redirect_to edit_log_path(@log)
             #add flash message
         end 
     end 
