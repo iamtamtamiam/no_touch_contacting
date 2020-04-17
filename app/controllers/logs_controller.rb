@@ -79,8 +79,7 @@ class LogsController < ApplicationController
         set_log_by_id
         @contacts = Contact.all
         redirect_to logs_path if !@log || @log.employee != current_employee
-        #add flash message for this log doesnt exist
-        #only user who created log can edit it. 
+        #add flash message for this log doesnt exist 
         # maybe add last upadated by? on the show page
     end 
 
@@ -94,6 +93,12 @@ class LogsController < ApplicationController
             #add flash message
         end 
     end 
+
+    def destroy
+        set_log_by_id
+        @log.destroy
+        redirect_to logs_path
+      end
 
 
 

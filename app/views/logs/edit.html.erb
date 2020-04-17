@@ -26,6 +26,8 @@
     <br>
 
 
-    <%= f.submit "Edit This Log"%>
+    <%= f.submit "Edit This Log"%> 
+    <br>OR
+    <br> <%= button_to "Delete This Log", log_path(@log), method: :delete, data: { confirm: "Are you sure you want to delete this log?" }%>
 
 <%end%>
