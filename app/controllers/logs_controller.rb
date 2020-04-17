@@ -11,15 +11,15 @@ class LogsController < ApplicationController
         
         #need to keep params different because of nested route and form params
         if !params[:employee].blank? && !params[:contact].blank?
-            @logs = Log.where("employee_id = ? AND contact_id = ?", params[:employee], params[:contact])
+            @logs = Log.where("employee_id = ? AND contact_id = ?", params[:employee], params[:contact]).date_ordered
         elsif params[:employee_id] 
-            @logs = Log.by_employee(params[:employee_id])
+            @logs = Log.by_employee(params[:employee_id]).date_ordered
         elsif !params[:employee].blank?
-            @logs = Log.by_employee(params[:employee])
+            @logs = Log.by_employee(params[:employee]).date_ordered
         elsif params[:contact_id]
-            @logs = Log.by_contact(params[:contact_id])
+            @logs = Log.by_contact(params[:contact_id]).date_ordered
         elsif !params[:contact].blank?
-            @logs = Log.by_contact(params[:contact])
+            @logs = Log.by_contact(params[:contact]).date_ordered
         else
             @logs = Log.all.date_ordered
         end
