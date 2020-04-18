@@ -61,7 +61,6 @@ class LogsController < ApplicationController
 
     def create
         @log = current_employee.logs.build(log_params)
-        #binding.pry
         if @log.save
             redirect_to log_path(@log)
         else
@@ -71,7 +70,6 @@ class LogsController < ApplicationController
 
     def show
         redirect_to logs_path if !@log
-        #add flash
     end 
 
     def edit
