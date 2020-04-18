@@ -85,11 +85,12 @@ class LogsController < ApplicationController
 
     def update
         set_log_by_id
+        @contacts = Contact.all
         redirect_to logs_path if !@log
         if @log.update(log_params)
             redirect_to log_path(@log)
         else
-            redirect_to edit_log_path(@log)
+            render :edit
             #add flash message
         end 
     end 
