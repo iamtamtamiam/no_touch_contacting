@@ -5,8 +5,12 @@
 <li>Description: <%= @contact.description%></li>
 <br>
 <li>Additional Notes About Contact: <%= @contact.notes%></li>
+<li>Added On: <%=contact_date(@contact.created_at) %></li>
+<li>Last Updated On: <%=contact_date(@contact.updated_at) %>  </li>
 
 <br>
+
+
 Contact Options: 
 <%= link_to  "Edit this Contact ", edit_contact_path(@contact) %> |
 <%= link_to "All Contacts", contacts_path %>

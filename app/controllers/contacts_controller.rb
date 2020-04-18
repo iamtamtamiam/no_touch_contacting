@@ -1,12 +1,13 @@
 class ContactsController < ApplicationController
     before_action :redirect_if_not_logged_in
+    before_action :set_contact_by_id, only: [:show, :edit, :update]
 
     layout 'layouts/user'
     def new
         @contact = Contact.new
     end 
 
-    def index #change it to only current_employee's contacts
+    def index #most frequently contacted
         @contacts = Contact.all.alpha
     end 
 
@@ -21,18 +22,14 @@ class ContactsController < ApplicationController
     end 
 
     def show
-        set_contact_by_id
+        #set_contact_by_id
     end 
 
     def edit
-        set_contact_by_id
-        #add flash message for this contact doesnt exist
-        #any user can edit contact...as long as logged in
         # maybe add last upadated by? on the show page
     end 
 
     def update
-       set_contact_by_id
         if @contact.update(contact_params)
             redirect_to contact_path(@contact)
         else

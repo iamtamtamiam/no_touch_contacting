@@ -8,15 +8,9 @@ class Log < ApplicationRecord
 
     scope :date_ordered, -> { order(date: :desc) }
 
-    #scope :both_filters, -> (apple, dog) { where("employee_id = ? AND contact_id = ?", apple, dog]) }
+    scope :both_filters, -> (employee, contact) { where("employee_id = ? AND contact_id = ?", employee, contact) }
     
-    
-    def self.both_filters_again(employee, contact)
-        where("employee_id = ? AND contact_id = ?", employee, contact)
-    end
 
-
-    #contact_id: params[:contact]) }
 
     def self.by_employee(employee_id)
         where(employee: employee_id)
@@ -25,13 +19,6 @@ class Log < ApplicationRecord
 
     def self.by_contact(contact_id)
         where(contact: contact_id)
-    end 
-
-
-    def filter_employee_contact
-        #not done
-        !params[:employee].blank? && !params[:contact].blank?
-
     end 
 
     
