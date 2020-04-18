@@ -1,11 +1,14 @@
-<%= form_for (@log) do |f| %>
 
-    <%= f.label :date, "Date AND Time" %>
+
+<%= form_for ([@contact, @log]) do |f| %>
+
+    <%= f.label :date, "Date and Time"%>
     <%= f.datetime_field :date%>
-    <br>
-    
+    <br>    
+
+    Select a Contact: <br>
     <% @contacts.each do |contact| %>
-        <input type="radio" name="log[contact_id]" id="<%= contact.id %>" value="<%= contact.id %>" <%= "checked" if contact.id==@log.contact_id %>>
+        <input type="radio" name="log[contact_id]" id="<%= contact.id %>" value="<%= contact.id %>" <%= "checked" if contact.id==@contact.id %>>
         <%= contact.name %><br>
     <% end %>
 
@@ -17,12 +20,11 @@
     <%= f.check_box :answered%>
     <br>
 
-    <%= f.label :log_notes, "Additional notes" %>
+    <%= f.label :log_notes, "additional notes" %>
     <%= f.text_area :log_notes%>
     <br>
 
 
-    <%= f.submit @log.persisted? ? 'Update Log' : 'Add New Log'%> 
-  
+    <%= f.submit "Add New Log"%>
 
 <%end%>

@@ -2,34 +2,8 @@
 <h2>Add a New Log</h2>
 
 <% if @contact %>
-    <%=render partial: 'form'%>
+    <%=render partial: 'nested_form'%>
 <% else%>
-    <%= form_for (@log) do |f| %>
-
-    <%= f.label :date, "Date and Time:" %>
-    <%= f.datetime_field :date%>
-    <br>
-    Select a Contact:<br>
-    <% @contacts.each do |contact| %>
-        <input type="radio" name="log[contact_id]" id="<%= contact.id %>" value="<%= contact.id %>" >
-        <%= contact.name %><br>
-    <% end %>
-
-    <%= f.label :communication_type %>
-    <%= f.text_field :communication_type%>
-    <br>
-
-    <%= f.label :answered, "Answered? (check if yes)" %>
-    <%= f.check_box :answered%>
-    <br>
-
-    <%= f.label :log_notes, "additional notes" %>
-    <%= f.text_area :log_notes%>
-    <br>
-
-
-    <%= f.submit "Add New Log"%>
-
-    <%end%>
+    <%=render partial: 'form'%>
 <%end%>
 

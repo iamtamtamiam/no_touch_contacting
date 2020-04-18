@@ -1,35 +1,8 @@
 <%= render partial: "layouts/errors", locals: {object: @log} %>
 
 <h5>Edit this Log</h5>
+    <%=render partial: 'form'%>
 
-<%= form_for (@log) do |f| %>
-
-    <%= f.label :date %>
-    <%= f.datetime_field :date%>
-    <br>
+    <br>OR
     
-    <% @contacts.each do |contact| %>
-        <input type="radio" name="log[contact_id]" id="<%= contact.id %>" value="<%= contact.id %>" <%= "checked" if contact.id==@log.contact_id %>>
-        <%= contact.name %><br>
-    <% end %>
-
-    <%= f.label :communication_type %>
-    <%= f.text_field :communication_type%>
-    <br>
-
-    <%= f.label :answered %>
-    <%= f.check_box :answered%>
-    <br>
-
-    <%= f.label :log_notes, "Additional notes" %>
-    <%= f.text_area :log_notes%>
-    <br>
-
-
-    <%= f.submit "Edit This Log"%> 
-  
-   
-
-<%end%>
-  <br>OR
- <br> <%= button_to "Delete This Log", @log, method: :delete, data: { confirm: "Are you sure you want to delete this log?" }%>
+    <br> <%= button_to "Delete This Log", @log, method: :delete, data: { confirm: "Are you sure you want to delete this log?" }%>
