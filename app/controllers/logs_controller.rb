@@ -2,13 +2,15 @@ class LogsController < ApplicationController
     
     before_action :redirect_if_not_logged_in
     before_action :set_log_by_id, only: [:show, :edit, :update, :destroy]
+    before_action :set_all_contacts, only: [:index, :new, :create, :edit, :update]
 
     layout 'layouts/user'
+
+    
     
     def index
         #nested routes
         @employees = Employee.all
-        @contacts = Contact.all
         
         #need to keep params different because of nested route and form params
         if !params[:employee].blank? && !params[:contact].blank?
@@ -50,7 +52,6 @@ class LogsController < ApplicationController
     end 
 
     def new
-        @contacts = Contact.all
         if params[:contact_id] && @contact = Contact.find_by(id: params[:contact_id])
             @log = @contact.logs.build
         else
@@ -63,7 +64,6 @@ class LogsController < ApplicationController
     end 
 
     def create
-        @contacts = Contact.all
         @log = current_employee.logs.build(log_params)
         #binding.pry
         if @log.save
@@ -74,23 +74,21 @@ class LogsController < ApplicationController
     end 
 
     def show
+        redirect_to logs_path if !@log
+        #add flash
     end 
 
     def edit
-        @contacts = Contact.all
         redirect_to logs_path if !@log || @log.employee != current_employee
         #add flash message for this log doesnt exist 
-        # maybe add last upadated by? on the show page
     end 
 
     def update
-        @contacts = Contact.all
         redirect_to logs_path if !@log
         if @log.update(log_params)
             redirect_to log_path(@log)
         else
             render :edit
-            #add flash message
         end 
     end 
 
@@ -105,6 +103,10 @@ class LogsController < ApplicationController
 
     def set_log_by_id
         @log = Log.find_by(id: params[:id])
+    end 
+
+    def set_all_contacts
+        @contacts = Contact.all
     end 
 
 
