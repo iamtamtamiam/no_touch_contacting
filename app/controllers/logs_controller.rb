@@ -1,6 +1,7 @@
 class LogsController < ApplicationController
     
     before_action :redirect_if_not_logged_in
+    before_action :set_log_by_id, only: [:show, :edit, :update, :destroy]
 
     layout 'layouts/user'
     
@@ -73,11 +74,9 @@ class LogsController < ApplicationController
     end 
 
     def show
-        set_log_by_id
     end 
 
     def edit
-        set_log_by_id
         @contacts = Contact.all
         redirect_to logs_path if !@log || @log.employee != current_employee
         #add flash message for this log doesnt exist 
@@ -85,7 +84,6 @@ class LogsController < ApplicationController
     end 
 
     def update
-        set_log_by_id
         @contacts = Contact.all
         redirect_to logs_path if !@log
         if @log.update(log_params)
@@ -97,7 +95,6 @@ class LogsController < ApplicationController
     end 
 
     def destroy
-        set_log_by_id
         @log.destroy
         redirect_to logs_path
     end
