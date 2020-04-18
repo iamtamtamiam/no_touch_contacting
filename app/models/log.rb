@@ -11,9 +11,9 @@ class Log < ApplicationRecord
     #scope :both_filters, -> (apple, dog) { where("employee_id = ? AND contact_id = ?", apple, dog]) }
     
     
-    #def self.both_filters_again(employee, contact)
-    #    where("employee_id = ? AND contact_id = ?", employee, contact])
-    #end
+    def self.both_filters_again(employee, contact)
+        where("employee_id = ? AND contact_id = ?", employee, contact)
+    end
 
 
     #contact_id: params[:contact]) }
