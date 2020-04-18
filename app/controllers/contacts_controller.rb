@@ -22,19 +22,16 @@ class ContactsController < ApplicationController
     end 
 
     def show
-        #set_contact_by_id
     end 
 
     def edit
-        # maybe add last upadated by? on the show page
     end 
 
     def update
         if @contact.update(contact_params)
             redirect_to contact_path(@contact)
         else
-            render :edit #will this work
-            #add flash message before
+            render :edit
         end 
     end 
 
