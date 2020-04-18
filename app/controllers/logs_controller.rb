@@ -3,7 +3,7 @@ class LogsController < ApplicationController
     before_action :redirect_if_not_logged_in
     before_action :set_log_by_id, only: [:show, :edit, :update, :destroy]
     before_action :set_all_contacts, only: [:index, :new, :create, :edit, :update]
-
+    before_action :redirect_if_not_log_employee, only: [:edit, :update, :destroy]
     layout 'layouts/user'
 
     
@@ -56,11 +56,7 @@ class LogsController < ApplicationController
             @log = @contact.logs.build
         else
             @log = Log.new
-        end 
-
-        #@log = Log.new
-        #@contacts = Contact.all
-        
+        end   
     end 
 
     def create
@@ -79,12 +75,9 @@ class LogsController < ApplicationController
     end 
 
     def edit
-        redirect_to logs_path if !@log || @log.employee != current_employee
-        #add flash message for this log doesnt exist 
     end 
 
     def update
-        redirect_to logs_path if !@log
         if @log.update(log_params)
             redirect_to log_path(@log)
         else
@@ -107,6 +100,11 @@ class LogsController < ApplicationController
 
     def set_all_contacts
         @contacts = Contact.all
+    end 
+
+    def redirect_if_not_log_employee
+        redirect_to logs_path if !@log || @log.employee != current_employee
+        flash[:message] = "You are not authorized to edit this log."
     end 
 
 
