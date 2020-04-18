@@ -98,7 +98,7 @@ class LogsController < ApplicationController
         set_log_by_id
         @log.destroy
         redirect_to logs_path
-      end
+    end
 
 
 
