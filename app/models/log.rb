@@ -21,6 +21,6 @@ class Log < ApplicationRecord
         where(contact: contact_id)
     end 
 
-    
+
 end
 

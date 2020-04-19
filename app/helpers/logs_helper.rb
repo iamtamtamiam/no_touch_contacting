@@ -11,6 +11,6 @@ module LogsHelper
     def display_date(log)
         log.date.strftime("%A - %B %d, %Y at%l:%M%P")
     end 
-
+    
 
 end
