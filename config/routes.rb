@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :contacts do
     resources :logs, only: [:new, :create, :index]
+    get 'most_frequently_contacted', :on => :collection
   end 
 
 

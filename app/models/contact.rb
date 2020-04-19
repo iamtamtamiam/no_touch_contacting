@@ -6,4 +6,6 @@ class Contact < ApplicationRecord
 
     scope :alpha, -> { order(:name) }
 
+    scope :most_frequent, -> {joins(:logs).group("id").order("count(logs.contact_id)desc")}
+
 end

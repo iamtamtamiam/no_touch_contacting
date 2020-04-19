@@ -7,9 +7,14 @@ class ContactsController < ApplicationController
         @contact = Contact.new
     end 
 
-    def index #most frequently contacted
-        @contacts = Contact.all.alpha
+    def index
+        @contacts = Contact.alpha
     end 
+
+    def most_frequently_contacted
+        @contacts = Contact.most_frequent
+    end 
+
 
     def create
         @contact = Contact.new(contact_params)
