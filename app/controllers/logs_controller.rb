@@ -9,13 +9,12 @@ class LogsController < ApplicationController
     
     
     def index
-        #nested routes
         @employees = Employee.all
         
-        #need to keep params different because of nested route and form params
+        #need to keep params different because of nested route(id) and filter form params
         if !params[:employee].blank? && !params[:contact].blank?
             @logs = Log.both_filters(params[:employee], params[:contact]).date_ordered
-            #@logs = Log.where("employee_id = ? AND contact_id = ?", params[:employee], params[:contact]).date_ordered
+            
         elsif params[:employee_id] 
             @logs = Log.by_employee(params[:employee_id]).date_ordered
         elsif !params[:employee].blank?
@@ -27,28 +26,6 @@ class LogsController < ApplicationController
         else
             @logs = Log.all.date_ordered
         end
-
-        
-
-
-
-        #if params[:contact_id] && @contact = Contact.find_by(id: params[:contact_id])
-        #    @logs = @contact.logs.date_ordered
-        #elsif params[:employee_id]
-        #    @logs = Log.by_employee(params[:employee_id])
-        ##elsif !params[:employee].blank? && params[:employee_id] 
-        #    #@logs = Log.by_employee(params[:employee]) 
-        #else
-        #    @logs = Log.all.date_ordered
-        #    #maybe need error message
-        #end
-    
-        # @employees = Employee.all
-        # if !params[:employee].blank?
-        #     @logs = Log.by_employee(params[:employee])
-        # else 
-        #     @logs = Log.all
-        # end
     end 
 
     def new
