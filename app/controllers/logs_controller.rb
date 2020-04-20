@@ -64,8 +64,10 @@ class LogsController < ApplicationController
     end 
 
     def redirect_if_not_log_employee
-        redirect_to logs_path if !@log || @log.employee != current_employee
-        flash[:message] = "You are not authorized to edit this log."
+        if !@log || @log.employee != current_employee
+            redirect_to logs_path if !@log || @log.employee != current_employee
+            flash[:message] = "You are not authorized to edit this log."
+        end
     end 
 
 
