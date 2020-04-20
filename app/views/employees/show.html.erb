@@ -9,15 +9,18 @@
 <div class="container">
   <div class="row">
     <div class="col-sm border border-dark rounded text-center">
-      <h3>Log History</h3>
+      <h3>View Logs</h3>
      <p> <%= link_to  "All of My Logs", employee_logs_path(@employee) %></p>
+     <p> <%= link_to  "All General Logs", logs_path %></p>
     </div>
     <div class="col-sm border border-dark rounded text-center">
-     <h3> Add a New Log</h3>
+     <h3> Add a New</h3>
       <p><%= link_to "Add Log", new_log_path %></p>
+      <p><%= link_to "Add Contact", new_contact_path %></p>
     </div>
     <div class="col-sm border border-dark rounded text-center">
       <h3>View All Contacts</h3>
+      <p><%= link_to  "General Most Frequently Contacted", most_frequently_contacted_contacts_path %>
       <p><%= link_to "All Contacts", contacts_path %></p>
     </div>
   </div>
