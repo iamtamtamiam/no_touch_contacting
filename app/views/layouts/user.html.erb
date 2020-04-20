@@ -9,7 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="users">
      <nav class="site-header">
        <div class="container d-flex flex-column flex-md-row justify-content-between">
           <% if logged_in? %>
@@ -30,11 +30,12 @@
 
 
  
-   
+      
         <div id="content">
 
             <%= yield %>
         </div><!-- #content-## -->
+  
 
 
 
