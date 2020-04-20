@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
         @contacts = Contact.alpha
     end 
 
-    def most_frequently_contacted
+    def most_frequently_contacted #scope url
         @contacts = Contact.most_frequent
     end 
 

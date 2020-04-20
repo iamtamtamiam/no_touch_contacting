@@ -12,12 +12,12 @@ class Log < ApplicationRecord
     
 
 
-    def self.by_employee(employee_id)
+    def self.by_employee(employee_id) #filter params
         where(employee: employee_id)
     end 
 
 
-    def self.by_contact(contact_id)
+    def self.by_contact(contact_id) #filter params
         where(contact: contact_id)
     end 
 
