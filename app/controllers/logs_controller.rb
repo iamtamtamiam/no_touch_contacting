@@ -10,21 +10,8 @@ class LogsController < ApplicationController
     
     def index
         @employees = Employee.all
-        #need to keep params different because of nested route(id) and filter form params
-        if !params[:employee].blank? && !params[:contact].blank?
-            @logs = Log.both_filters(params[:employee], params[:contact]).date_ordered
-            
-        elsif params[:employee_id] 
-            @logs = Log.by_employee(params[:employee_id]).date_ordered
-        elsif !params[:employee].blank?
-            @logs = Log.by_employee(params[:employee]).date_ordered
-        elsif params[:contact_id]
-            @logs = Log.by_contact(params[:contact_id]).date_ordered
-        elsif !params[:contact].blank?
-            @logs = Log.by_contact(params[:contact]).date_ordered
-        else
-            @logs = Log.all.date_ordered
-        end
+        
+        @logs = Log.filter_index(params)
     end 
 
     def new

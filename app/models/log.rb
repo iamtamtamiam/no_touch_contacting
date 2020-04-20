@@ -22,7 +22,22 @@ class Log < ApplicationRecord
     end 
 
    
-
+    def self.filter_index(params)
+        #need to keep params different because of nested route(id) and filter form params
+        if !params[:employee].blank? && !params[:contact].blank?
+           Log.both_filters(params[:employee], params[:contact]).date_ordered   
+        elsif params[:employee_id] 
+            Log.by_employee(params[:employee_id]).date_ordered
+        elsif !params[:employee].blank?
+            Log.by_employee(params[:employee]).date_ordered
+        elsif params[:contact_id]
+            Log.by_contact(params[:contact_id]).date_ordered
+        elsif !params[:contact].blank?
+            Log.by_contact(params[:contact]).date_ordered
+        else
+            Log.all.date_ordered
+        end
+    end 
 
 end
 
