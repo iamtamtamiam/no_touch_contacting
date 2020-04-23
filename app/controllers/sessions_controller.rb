@@ -1,10 +1,8 @@
 class SessionsController < ApplicationController
-    #layout 'layouts/welcome'
     layout 'layouts/welcome'
 
     def new
         redirect_if_logged_in
-        #render layout: 'welcome'
     end 
 
     def create
@@ -15,7 +13,7 @@ class SessionsController < ApplicationController
             redirect_to employee_path(@employee)
         else
             flash[:message] = "Incorrect Username/Password. Please Try Again."
-            redirect_to login_path #why not render?
+            redirect_to login_path 
         end 
 
     end 
@@ -35,8 +33,6 @@ class SessionsController < ApplicationController
             redirect_to root_path
         end 
 
-
-        #binding.pry
     end 
 
 
