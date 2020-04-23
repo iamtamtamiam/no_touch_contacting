@@ -1,11 +1,11 @@
 class EmployeesController < ApplicationController
 
-    layout 'layouts/user'
+    layout 'layouts/welcome', except: [:show]
 
     def new
         redirect_if_logged_in
         @employee = Employee.new
-        render layout: 'welcome'
+       #render layout: 'welcome'
         
     end 
 
@@ -20,6 +20,7 @@ class EmployeesController < ApplicationController
     end 
 
     def show
+        
         if logged_in?
             @employee = Employee.find_by(id: params[:id])
             if @employee != current_employee
@@ -27,7 +28,8 @@ class EmployeesController < ApplicationController
                 redirect_to employee_path(current_employee)
             end
         else redirect_if_not_logged_in
-        end     
+        end   
+        render layout: 'user'  
     end 
 
     private
